@@ -1,0 +1,13 @@
+---
+- name: install ferm
+  apt:
+    name: ferm
+    state: present
+
+- name: write /etc/ferm/ferm.conf
+  template:
+    dest: /etc/ferm/ferm.conf
+    group: adm
+    mode: 0644
+    owner: root
+    src: ferm.conf.j2

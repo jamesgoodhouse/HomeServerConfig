@@ -1,0 +1,14 @@
+---
+users:
+  james:
+    createhome: yes
+    groups:
+    home: /home/james
+    password: '!'
+    public_keys_absent: []
+    public_keys_present: []
+    shell: /bin/false
+    state: present
+    system: yes
+    uid: 1066
+    username: james

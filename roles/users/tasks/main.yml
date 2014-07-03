@@ -1,0 +1,31 @@
+---
+- name: create users
+  user:
+    createhome: "{{ item.value.createhome }}"
+    groups:     "{{ item.value.groups }}"
+    home:       "{{ item.value.home }}"
+    name:       "{{ item.value.username }}"
+    password:   "{{ item.value.password }}"
+    shell:      "{{ item.value.shell }}"
+    state:      "{{ item.value.state }}"
+    system:     "{{ item.value.system }}"
+    uid:        "{{ item.value.uid }}"
+  with_dict: users
+
+- name: add ssh public keys to users
+  authorized_key:
+    key:   "{{ item.1 }}"
+    state: present
+    user:  "{{ item.0.username }}"
+  with_subelements:
+    - users
+    - public_keys_present
+
+- name: remove ssh public keys from users
+  authorized_key:
+    key:   "{{ item.1 }}"
+    state: absent
+    user:  "{{ item.0.username }}"
+  with_subelements:
+    - users
+    - public_keys_absent

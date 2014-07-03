@@ -1,0 +1,26 @@
+---
+- name: check for plex
+  apt:
+    name: plexmediaserver
+    state: present
+  ignore_errors: true
+  register: install_result
+
+- name: download plex deb
+  get_url:
+    dest: "/tmp/plexmediaserver_{{ plex.version }}_amd64.deb"
+    url: "http://downloads.plexapp.com/plex-media-server/0.9.9.12.504-3e7f93c/plexmediaserver_{{ plex.version }}_amd64.deb"
+  when: install_result|failed
+
+- name: install plex from deb
+  apt:
+    deb: "/tmp/plexmediaserver_{{ plex.version }}_amd64.deb"
+  when: install_result|failed
+
+- name: install avahi
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - avahi-daemon
+    - avahi-utils

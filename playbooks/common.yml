@@ -1,0 +1,14 @@
+---
+- name: Common Stuff
+  hosts: all
+  sudo: yes
+
+  roles:
+    - iptables
+    - users
+
+  tasks:
+    - name: Install Zsh
+      apt:
+        name: zsh
+        state: present
