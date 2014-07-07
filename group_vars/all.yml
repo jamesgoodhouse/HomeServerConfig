@@ -1,6 +1,7 @@
 ---
 users:
   james:
+    allow_ssh: true
     createhome: yes
     groups: admin
     home: /home/james

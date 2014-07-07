@@ -88,4 +88,4 @@ AcceptEnv LANG LC_*
 # and ChallengeResponseAuthentication to 'no'.
 UsePAM yes
 
-AllowUsers james vagrant
+AllowUsers {% for key,value in users.iteritems() %}{% if value.allow_ssh %}{{ value.username }}{% endif %}{% endfor %}{% if vagrant is defined and vagrant == true %} vagrant{% endif %}

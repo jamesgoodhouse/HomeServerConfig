@@ -5,7 +5,6 @@
 
   roles:
     - apt
-    - iptables
     - users
 
   tasks:

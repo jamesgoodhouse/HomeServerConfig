@@ -6,3 +6,5 @@
     mode: 0644
     owner: root
     src: sshd_config.j2
+  notify:
+    - reload ssh

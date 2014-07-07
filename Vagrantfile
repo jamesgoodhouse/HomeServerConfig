@@ -10,6 +10,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
 
   config.vm.provision 'ansible' do |ansible|
+    ansible.extra_vars = {
+      vagrant: true
+    }
     ansible.playbook = 'playbook.yml'
     ansible.verbose = 'vvvv'
   end
