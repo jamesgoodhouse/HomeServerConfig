@@ -3,3 +3,4 @@
   apt:
     name: deluge
     state: present
+    update_cache: yes
