@@ -3,7 +3,6 @@
   apt:
     name: ferm
     state: present
-    update_cache: yes
 
 - name: write /etc/ferm/ferm.conf
   template:

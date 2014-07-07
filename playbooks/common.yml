@@ -4,6 +4,7 @@
   sudo: yes
 
   roles:
+    - apt
     - iptables
     - users
 
