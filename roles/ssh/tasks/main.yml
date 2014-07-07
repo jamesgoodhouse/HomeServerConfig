@@ -1,0 +1,8 @@
+---
+- name: write /etc/ssh/sshd_config
+  template:
+    dest: /etc/ssh/sshd_config
+    group: root
+    mode: 0644
+    owner: root
+    src: sshd_config.j2
