@@ -11,3 +11,5 @@
     mode: 0644
     owner: root
     src: ferm.conf.j2
+  notify:
+    - reload config
