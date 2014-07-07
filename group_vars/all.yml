@@ -2,13 +2,13 @@
 users:
   james:
     createhome: yes
-    groups:
+    groups: admin
     home: /home/james
-    password: '!'
+    password: $6$j1K1QiHJ$Ya4t7OoouE1a2pHnGT9VSHwhu8cKgp85FjbsY4vwYu/pBDXIZ3pt5mz7Be.KF229zafB5TvMPXcgyZ3NIUmr31
     public_keys_absent: []
     public_keys_present: []
-    shell: /bin/false
+    shell: /bin/zsh
     state: present
-    system: yes
-    uid: 1066
+    system: no
+    uid: 1050
     username: james
