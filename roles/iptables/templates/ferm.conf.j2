@@ -34,16 +34,20 @@ table filter {
         # reject remaining incoming traffic with icmp protocol unreachable messages
         REJECT reject-with icmp-proto-unreachable;
     }
+
     chain OUTPUT {
         policy ACCEPT;
     }
+
     chain FORWARD {
         policy DROP;
     }
+
     chain TCP {
         proto tcp dport 22    ACCEPT; # allow SSH connections
         proto tcp dport 32400 ACCEPT; # allow Plex connections
     }
+
     chain UDP {
     }
 }
