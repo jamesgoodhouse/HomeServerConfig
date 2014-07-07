@@ -9,33 +9,42 @@ table filter {
     chain INPUT {
         policy DROP;
 
-        # connection tracking
-        mod state state INVALID DROP;
-        mod state state (ESTABLISHED RELATED) ACCEPT;
+        # allow traffic for established and/or related traffic
+        mod conntrack ctstate (ESTABLISHED RELATED) ACCEPT;
 
-        # allow local packet
+        # allow traffic from loopback interface
         interface lo ACCEPT;
 
-        # allow IPsec
-        proto udp dport 500 ACCEPT;
-        proto (esp ah) ACCEPT;
+        # drop all traffic with an "INVALID" state match
+        mod conntrack ctstate INVALID DROP;
 
-        # allow SSH connections
-        proto tcp dport ssh ACCEPT;
+        # accept all new incoming ICMP echo requests
+        proto icmp icmp-type 8 mod conntrack ctstate NEW ACCEPT;
+
+        # attach UDP and TCP chains to INPUT chain
+        proto udp mod conntrack ctstate NEW jump UDP;
+        proto tcp syn mod conntrack ctstate NEW jump TCP;
+
+        # reject UDP streams with ICMP port unreachable messages
+        proto udp REJECT reject-with icmp-port-unreachable;
+
+        # reject connections with TCP RST packets
+        proto tcp REJECT reject-with tcp-rst;
+
+        # reject remaining incoming traffic with icmp protocol unreachable messages
+        REJECT reject-with icmp-proto-unreachable;
     }
     chain OUTPUT {
         policy ACCEPT;
-
-        # connection tracking
-        #mod state state INVALID DROP;
-        mod state state (ESTABLISHED RELATED) ACCEPT;
     }
     chain FORWARD {
         policy DROP;
-
-        # connection tracking
-        mod state state INVALID DROP;
-        mod state state (ESTABLISHED RELATED) ACCEPT;
+    }
+    chain TCP {
+        proto tcp dport 22    ACCEPT; # allow SSH connections
+        proto tcp dport 32400 ACCEPT; # allow Plex connections
+    }
+    chain UDP {
     }
 }
 
