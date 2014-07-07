@@ -1,6 +1,10 @@
 ---
 - name: install deluge
   apt:
-    name: deluge
+    name: "{{ item }}"
     state: present
     update_cache: yes
+  with_items:
+    - deluge
+    - deluged
+    - deluge-web
