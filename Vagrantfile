@@ -14,6 +14,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vagrant: true
     }
     ansible.playbook = 'playbook.yml'
-    ansible.verbose = 'vvvv'
+    ansible.verbose = 'v'
   end
 end
