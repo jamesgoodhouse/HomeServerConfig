@@ -1,3 +1,6 @@
 [submodule "roles/shared/ssh"]
 	path = roles/shared/ssh
 	url = git@github.com:jamesgoodhouse/Ansible-Role-SSH.git
+[submodule "roles/shared/apt"]
+	path = roles/shared/apt
+	url = git@github.com:jamesgoodhouse/Ansible-Role-Apt.git
