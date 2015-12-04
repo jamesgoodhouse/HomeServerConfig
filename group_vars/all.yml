@@ -1,15 +1,25 @@
 ---
-users:
+apt:
+  packages:
+    - git
+    - ntp
+    - vim
+    - zsh
+
+linux_users:
   james:
-    allow_ssh: true
-    createhome: yes
-    groups: admin
+    createhome: true
+    groups: 'adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare'
     home: /home/james
-    password: $6$j1K1QiHJ$Ya4t7OoouE1a2pHnGT9VSHwhu8cKgp85FjbsY4vwYu/pBDXIZ3pt5mz7Be.KF229zafB5TvMPXcgyZ3NIUmr31
+    password: $6$cxSNKz7N$p3zEl6pvMnJZ6Wd.X5XVLkb/eZmrx.Kg6dH3FM3TD3FD6iV4SvJLu1JL6/HtLDi0O7vW0ap30wWd3UN4hVgae/
     public_keys_absent: []
-    public_keys_present: []
+    public_keys_present:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCdx/F3S7NWTK5Fmk9/5kyMhKJl13fqrXQlkETTxJNP1somMH5l5E3PCrDyzn3fULkTUoDZaBISQGk3+7jgeFPE3BDoZD7qe3lxzCBh5lJqmHXpfBzDMensTf+p+01lXECJrJ3RjItLiNLJ24NNA6AqrnCzMb//EdqWxlHuXIPBiA/PTcRRK2FOTaortQXOeCnLTfZgGU/iFyolzZKbgjpKcQXetJpqMc/QyDPGJbF9tuAHSyezRupjmW9098TNcUyYb9gO8ZEU05WzNlZddVjHkdoz0nXrY+j7w80MhJIlcxt1+gC4DiUMYL6P0yT4e0Ha5ohjo88a9s7iElMFqcECBzwoxPQ2ZDBirKUZeU1Y53HcIoWY8ZgF8v2Ua28lAFM6JwaauE8M9RFtCP79C7nU6XJ1FUBl5FsAQkcDAFi0Sni0cwa9gNaIJsB1I+W8sruSIjfAlBZmmxD5ZQd2OXZY4lldlqdUwjtsLZNOGwWiMaRbM4TgZ6eINpMslEmgPvAksd2uAAumXy0xhaj47s5jJQY2Wqq6C4P99OqrGMtHJJZaXtlG1wKM54hdB6HbLzIwjiM4RaJBxgxFM05vZXz8KEje8o/JJjrqXo6CtzwFtiqKQBfil1kNrfJG+G4D4nVJUHspHi2gNBcB53EV26OwVQmI2BqYdv3Ns61lfNA4Kw== Nexus 5
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQC19bK6nhMzwamrrc5xESfJDo49PnCGhx/ttu4GgGaVPwW3Go1YcShTAE/OuKrUQ6cX6SvB4BqhzPKzZa+CAwIQTmwQDXqZEt00CTi5bxbWlYRUu8cEAJDvwwyoVifO/PdG8ml7XHFWLvk/aq8KttyyQO76lio1kdzl6YdigCLXwkGbaFizfIayzd+p1QhVWCd+QxQj8bdftHl4E3fi8jNHADFG7UHRc/Jo/sFBXngFDckasWSi9DbQrz5VTfD0rFmAhE6Qay/ls57bmnPZSUsGc33lpqnLhsndC4bSrmfesX8FYbSDDe6R5CYVOrx6Na1JhtRToMy9cp484rFCMhWpxrD5t28TVARxC2tgNJIDQBFrRChFrqZO71OCCBZLJ6imh4pGIwy0Nd1GHIU9cVDjoND4pE85IE6fA7qmS9Q/GhUcUizZahWc34/Smz4DzOYhC3tmY9rB901JtyH8Wcg0CyjPE4k/ZNI29G6CmHVHxDYRaGK6ve78203Hb2IIaCGDhlfHs4rOL21FOI5EcPGVmh+lkszXGTFcuhbVU87dY1+Rw+jm65kUXK3nr8vjsvMAuVEYQXORlWOmhTQA4j79iw34qPDnC4s1Klhsq5hC5FmD+pjA5ESDAXvjJAjiIXRyJyZaVWJKuMzmMZMyxx1671L4jtoWgXkXM0qS1VNvitcURbb/OibYmRvbQnjM37E2/GvWxtTx6n/NKCvp1spHYGh6J+pJW2DL78OCOQ4ILMKpyiBV46RmIbyTGWSUlf6+zDeq9SRVNdc6Bws3VuR3pcMyoHZ0Q8+4/6yrV1UhQJfjLL8PyuN9nh+E1sUeyeERmSbto80sqvO1hS7wFy8l4XjFsW7vS+C07G56Kcue4jGREXLr9jVEuYrk9o8G6YXibKC7fZa4ecobLVQ6wJgrC+zE263ICJSG68SSdNcWLtcK+1U9pziwpPeohsj9aAQDP/lDOzoNjzW2i3U0vvFaRKyuiJR0PZ6nQCXFHoux5ieHwRjbJ5CS6H8fp3tgIJF358vP0M70cY7jr0cegA8hkhsy5sESKxvOBhr2YdK6ZMdTqCnM/ToLGRLkwtKu+oWybFTSq6mPrLSNU+i2j5e4CrnxJqT5TR1UiXV4DoDAypTMsuMLHp4O+R3tCb7g3/dF7XcE1ep9b9b8kSxl0d3MLz7j+w/4vzypH3C/U9au2oQk54nzi5+7YJAMc4MwF0bmXZjKYoV9sBRV6qAijGvHIbF/pKroz6F4fIB3GlpitKWtyMVEdF0zopSK7PzvIgUu3TYGsAohnV6U/oVntRaKE4h9wpA0zbgf/ky1IhjGuTl7pE9zhbXZvyR2bTnaSf4AO8XF/VOSj1SbDrVacWQ3 MacBook Pro (Personal)
     shell: /bin/zsh
     state: present
-    system: no
-    uid: 1050
-    username: james
+    system: false
+    name: james
+
+ssh:
+  allow_users: james

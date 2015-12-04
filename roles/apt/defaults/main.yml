@@ -1,0 +1,4 @@
+---
+apt:
+  auto_security_updates: true
+  packages: []

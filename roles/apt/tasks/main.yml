@@ -1,0 +1,33 @@
+---
+- name: update repo
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+  tags: apt
+
+- name: install user-defined apps
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: apt.packages
+  tags: apt
+
+- name: write /etc/apt/apt.conf.d/20auto-upgrades
+  copy:
+    src: 20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    owner: root
+    group: root
+    mode: 0644
+  when: apt.auto_security_updates
+  tags: apt
+
+- name: write /etc/apt/apt.conf.d/50unattended-upgrades
+  copy:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    owner: root
+    group: root
+    mode: 0644
+  when: apt.auto_security_updates
+  tags: apt

@@ -1,8 +1,9 @@
 ---
 - name: Security Stuff
   hosts: all
+  remote_user: james
   sudo: yes
 
   roles:
-    - iptables
-    - shared/ssh
+    - ssh
+    # - iptables

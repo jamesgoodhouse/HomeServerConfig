@@ -1,14 +1,9 @@
 ---
 - name: Common Stuff
   hosts: all
+  remote_user: james
   sudo: yes
 
   roles:
-    - shared/apt
+    - apt
     - users
-
-  tasks:
-    - name: Install Zsh
-      apt:
-        name: zsh
-        state: present

@@ -2,5 +2,3 @@
 - include: playbooks/common.yml
 
 - include: playbooks/security.yml
-
-- include: playbooks/media.yml

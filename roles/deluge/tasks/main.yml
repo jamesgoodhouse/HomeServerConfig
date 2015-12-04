@@ -1,9 +1,0 @@
----
-- name: install deluge
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - deluge
-    - deluged
-    - deluge-web
